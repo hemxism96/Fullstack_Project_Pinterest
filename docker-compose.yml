@@ -1,19 +1,17 @@
 version: "3"
 
 services:
-  web:
-    build: .
-    command: python manage.py runserver 0:8000
+  app:
+    build: ./app
     ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
-    depends_on:
+      - "5000:5000"
+    links:
       - db
   db:
     image: mysql:5.7
+    ports:
+      - "32000:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=django
-      - MYSQL_USER=django
-      - MYSQL_PASSWORD=django
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
