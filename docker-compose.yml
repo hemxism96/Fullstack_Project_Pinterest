@@ -1,5 +1,12 @@
 version: "3"
 
+networks:
+  default:
+    driver: bridge
+volumes:
+  kong-datastore:
+  elasticsearch:
+
 services:
   app:
     build: ./api
@@ -15,3 +22,14 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
+    networks:
+      - default
+  nginx:
+    image: nginx:latest
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
+      - frontend
+    ports:
+      - "80:80"
