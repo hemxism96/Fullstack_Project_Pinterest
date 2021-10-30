@@ -1,9 +1,12 @@
-FROM python:3
+FROM python:3.8
 
-ADD requirements.txt .
+RUN mkdir /backend
 
-RUN pip install -r requirements.txt
+WORKDIR /backend
 
+COPY requirements.txt /backend/requirements.txt
+
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+    
 COPY . .
-
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

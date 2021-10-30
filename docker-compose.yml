@@ -6,14 +6,24 @@ networks:
 volumes:
   kong-datastore:
   elasticsearch:
+  node-modules:
 
 services:
-  app:
-    build: ./api
+  backend:
+    build: api
+    command: ["gunicorn", "-b", ":5000", "main:app"]
+    volumes:
+      - ./api:/backend
     ports:
       - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
     links:
       - db
+    networks:
+      - default
+
   db:
     image: mysql:5.7
     ports:
@@ -24,12 +34,18 @@ services:
       - ./db:/docker-entrypoint-initdb.d/:ro
     networks:
       - default
-  nginx:
-    image: nginx:latest
-    volumes: 
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - app
-      - frontend
+      
+  frontend:
+    build: client
+    volumes:
+      - ./client:/frontend
+      - node-modules:/frontend/node_modules
+    environment:
+      - NODE_ENV=development
     ports:
-      - "80:80"
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - default
+    
