@@ -1,4 +1,4 @@
-version: "3"
+version: '3.7'
 
 networks:
   default:
@@ -9,43 +9,41 @@ volumes:
   node-modules:
 
 services:
-  backend:
-    build: api
-    command: ["gunicorn", "-b", ":5000", "main:app"]
-    volumes:
-      - ./api:/backend
-    ports:
-      - "5000:5000"
-    environment:
-      - FLASK_ENV=development
-      - FLASK_APP=app.py
-    links:
-      - db
-    networks:
-      - default
-
-  db:
-    image: mysql:5.7
-    ports:
-      - "32000:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ro
-    networks:
-      - default
-      
-  frontend:
-    build: client
-    volumes:
-      - ./client:/frontend
-      - node-modules:/frontend/node_modules
-    environment:
-      - NODE_ENV=development
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-    networks:
-      - default
     
+    mysql_db:
+        image: mysql:5.7
+        ports:
+            - "32000:3306"
+        environment:
+            MYSQL_ROOT_USERNAME: "admin"
+            MYSQL_ROOT_PASSWORD: "password"
+            MYSQL_INITDB_DATABASE: app
+            MYSQL_DATA_DIR: /db
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d/:ro
+        networks:
+            - default
+
+    api:
+        build:  ./backend
+        command: ["gunicorn", "-b", ":5000", "main:app"]
+        expose:
+            - 5000
+        environment:
+            MYSQL_HOST: "mysql_db"
+            MYSQL_USERNAME: "apiuser"
+            MYSQL_PASSWORD: "apipassword"
+        depends_on: 
+            - mysql_db
+        networks:
+            - default
+
+    client:
+        build:  ./frontend
+        ports:
+            - "3000:80"
+        volumes: 
+            - ./frontend:/app
+            - /app/node_modules
+        networks:
+            - default
