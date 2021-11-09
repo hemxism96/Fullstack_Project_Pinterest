@@ -1,38 +1,39 @@
 import React, { Component } from 'react';
 import PostDataService from "../services/post";
 
-class Home extends React.Component {
-  constructor() {
-    super()
+const url = '/api/about'
 
+class Home extends Component {
+  constructor(props) {
+    super(props);
+ 
     this.state = {
-      pyResp: []
-    }
+      hits: [],
+    };
   }
-
-  fetchHelloWorld() {
-    console.log("fetching python localhost");
-    fetch('https://data.cityofnewyork.us/api/views/25th-nujf/rows.json')
-      .then(r => r.json())
-      .then(r => {
-        console.log(r)
-        this.setState({
-          pyResp: r
-        })
-      })
-      .catch(err => console.log(err))
+ 
+  componentDidMount() {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.setState({ hits: data.hits}));
   }
 
   render() {
+    const { hits } = this.state;
+      
     return (
-      <div className="home">
-        <h1>Blockchain Voter</h1>
-        <p>
-          {this.state.pyResp}
-        </p>
-        <button onClick={() => this.fetchHelloWorld()}>Python</button>
-      </div>
-    );
+        <div className="home">
+          <h1>Blockchain Voter</h1>
+          <ul>
+            {hits.map(hit =>
+              <li key={hit.one}>
+                <a>{hit.two}</a>
+              </li>
+            )}
+          </ul>
+          <button onClick={() => this.fetchHelloWorld()}>Python</button>
+        </div>
+      )
   }
 }
 export default Home;

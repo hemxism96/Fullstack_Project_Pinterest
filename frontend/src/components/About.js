@@ -1,46 +1,39 @@
 import React, { Component } from 'react';
-import axios from "axios";
+
+const API = 'https://hn.algolia.com/api/v1/search?query=';
+const DEFAULT_QUERY = 'redux';
 
 class About extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-
+ 
     this.state = {
-      items: [],
-      isLoaded: false,
-      }
-    }
-
-  componentDidMount(){
-    var myRequest = new Request('/api/about');
-
-    fetch(myRequest)
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-        isLoaded: true,
-        items: json,
-        })
-      });
-    }
+      hits: [],
+    };
+  }
+ 
+  componentDidMount() {
+    fetch(API + DEFAULT_QUERY)
+      .then(response => response.json())
+      .then(data => this.setState({ hits: data.hits }));
+  }
 
   render() {
-    var { isLoaded, items } = this.state;
-
-    if (!isLoaded) {
-      return <div>Loading...</div>;
-    }
-    else{
-      return (
+    const { hits } = this.state;
+      
+    return (
         <div className="home">
           <h1>Blockchain Voter</h1>
           <ul>
-            {items}
+            {hits.map(hit =>
+              <li key={hit.objectID}>
+                <a href={hit.url}>{hit.title}</a>
+              </li>
+            )}
           </ul>
           <button onClick={() => this.fetchHelloWorld()}>Python</button>
         </div>
-      );
-    }
+      )
   }
 }
 export default About;

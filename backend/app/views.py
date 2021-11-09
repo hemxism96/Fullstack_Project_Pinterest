@@ -33,6 +33,6 @@ def test_response():
 
 @views.route('/api/about')
 def health():
-    tmp = {'jack': 4098, 'sape': 4139}
+    tmp = {'hits':[{'one': 4098, 'two': 4139}]}
     return tmp
 
