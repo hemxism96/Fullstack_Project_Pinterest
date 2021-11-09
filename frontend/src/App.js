@@ -19,14 +19,14 @@ class App extends Component {
               <li className="tap_c"><img src={logo} width="150" alt="logo" /></li>
               <li className="tap_c"><a href="#news"><Link to={'/home'} className="nav-link"> Home </Link></a></li>
               <li className="tap_c"><a href="#contact"><Link to={'/contact'} className="nav-link">Contact</Link></a></li>
-              <li className="tap_c"><a href="#about"><Link to={'/about'} className="nav-link">About</Link></a></li>
-              <li className="tap_c"><a href="#about"><Link to={'/about'} className="nav-link">Login</Link></a></li>
+              <li className="tap_c"><a href="#about"><Link to={'/api/about'} className="nav-link">About</Link></a></li>
+              <li className="tap_c"><a href="#about"><Link to={'/api/about'} className="nav-link">Login</Link></a></li>
             </ul>
 
             <Switch>
                 <Route exact path='/home' component={Home} />
                 <Route path='/contact' component={Contact} />
-                <Route path='/about' component={About} />
+                <Route path='/api/about' component={About} />
             </Switch>
           </div>
       </Router>

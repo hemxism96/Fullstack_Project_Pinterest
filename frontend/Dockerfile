@@ -11,12 +11,15 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 RUN npm install
 RUN npm install react-router-dom
+RUN npm install axios --save
 RUN npm install react-scripts -g
 
 ADD . /app
 
 # start app
 RUN npm run build
+
+
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.17-alpine
