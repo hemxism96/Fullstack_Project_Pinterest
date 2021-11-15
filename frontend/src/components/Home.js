@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PostDataService from "../services/post";
 
 const url = '/api/about'
 

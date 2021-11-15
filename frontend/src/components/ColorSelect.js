@@ -1,35 +1,38 @@
-import React, { useState } from "react";
+import React, { Component } from 'react';
 
-import Dropdown from "./Dropdown";
+const url = '/api/home';
 
-const colorOptions = [
-  {
-    label: "The Color Red",
-    value: "red",
-  },
-  {
-    label: "The Color Green",
-    value: "green",
-  },
-  {
-    label: "The Color Blue",
-    value: "blue",
-  },
-];
+class Test extends Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      hits: [],
+    };
+  }
+ 
+  componentDidMount() {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.setState({ hits: data.quotes }));
+  }
 
-const ColorSelect = () => {
-  const [selected, setSelected] = useState(colorOptions[0]);
-
-  return (
-    <div>
-      <Dropdown
-        label="Select a Color"
-        options={colorOptions}
-        selected={selected}
-        onSelectedChange={setSelected}
-      />
-    </div>
-  );
-};
-
-export default ColorSelect;
+  render() {
+    const { hits } = this.state;
+      
+    return (
+        <div className="test">
+          <h1>Blockchain Voter</h1>
+          <ul>
+            {hits.map(hit =>
+              <li key={hit.id}>
+                {hit.quotes}
+              </li>
+            )}
+          </ul>
+          <button onClick={() => this.fetchHelloWorld()}>Python</button>
+        </div>
+      )
+  }
+}
+export default Test;

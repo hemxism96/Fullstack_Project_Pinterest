@@ -1,8 +1,11 @@
 from flask import Blueprint, render_template, request, jsonify, Response, make_response
 from sqlalchemy import text
-import json
 
 views = Blueprint('views', __name__)
+
+@views.route("/")
+def index():
+    return Response(mimetype="application/json", status=200)
 
 @views.route("/api/sign-up", methods = ['POST'])
 def sign_up():
@@ -19,14 +22,6 @@ def sign_up():
 
         return "", 200
 
-@views.route('/test')
-def tes():
-    return "<h1> HELLO WORLD2!!!!!</h1>"
-
-@views.route("/")
-def index():
-    return Response(mimetype="application/json", status=200)
-
 @views.route('/about')
 def test_response():
     return jsonify({'jack': 4098, 'sape': 4139})
@@ -35,4 +30,3 @@ def test_response():
 def health():
     tmp = {'hits':[{'one': 4098, 'two': 4139}]}
     return tmp
-

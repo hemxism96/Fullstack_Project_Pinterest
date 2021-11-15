@@ -4,3 +4,7 @@ flask_oidc
 mysql-connector-python
 sqlalchemy
 flask_cors
+flask-mysql
+Flask-SQLAlchemy
+mysqlclient
+flask-mysqldb
