@@ -7,6 +7,8 @@ import Translate from "./components/Translate";
 import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Home from "./components/Home";
+import Login from "./components/Login";
+import Subscribe from "./components/Subscribe";
 
 export default () => {
   return (
@@ -32,6 +34,12 @@ export default () => {
         <ColorSelect />
         <Translate />
         <Search />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/subscribe">
+        <Subscribe />
       </Route>
     </div>
   );

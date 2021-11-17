@@ -37,6 +37,11 @@ const Header = () => {
             All Widgets
           </Link>
         </li>
+        <li className="tap">
+          <Link href="/login" className="item">
+            Log in
+          </Link>
+        </li>
       </div>
   );
 };

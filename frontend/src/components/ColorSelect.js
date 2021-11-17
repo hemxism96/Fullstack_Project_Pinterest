@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const url = '/api/home';
+const url = '/api/test';
 
 class Test extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Test extends Component {
   componentDidMount() {
     fetch(url)
       .then(response => response.json())
-      .then(data => this.setState({ hits: data.quotes }));
+      .then(data => this.setState({ hits: data }));
   }
 
   render() {
@@ -25,8 +25,9 @@ class Test extends Component {
           <h1>Blockchain Voter</h1>
           <ul>
             {hits.map(hit =>
-              <li key={hit.id}>
-                {hit.quotes}
+              <li key={hit._id}>
+                {hit.age}
+                {hit.name}
               </li>
             )}
           </ul>
