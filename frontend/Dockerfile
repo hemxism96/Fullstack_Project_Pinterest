@@ -18,6 +18,7 @@ ADD . /app
 
 # start app
 RUN npm run build
+RUN npm start
 
 
 

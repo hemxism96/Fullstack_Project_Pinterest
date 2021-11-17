@@ -18,7 +18,7 @@ const items = [
   },
 ];
 
-const Accordion = () => {
+const Categories = () => {
   const [activeTab, setActiveTab] = useState(null);
 
   const onTitleClick = (index) => {
@@ -49,4 +49,4 @@ const Accordion = () => {
   );
 };
 
-export default Accordion;
+export default Categories;

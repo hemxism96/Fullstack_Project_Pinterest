@@ -2,9 +2,10 @@ import React from "react";
 
 import Header from "./components/Header";
 import Route from "./components/Route";
+import FinalBoard from './components/FinalBoard';
 import ColorSelect from "./components/ColorSelect";
 import Translate from "./components/Translate";
-import Accordion from "./components/Accordion";
+import Categories from "./components/Categories";
 import Search from "./components/Search";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -15,7 +16,7 @@ export default () => {
     <div className="ui container">
       <Header />
       <Route path="/">
-        <Accordion />
+        <Categories />
       </Route>
       <Route path="/home">
         <Home />
@@ -30,10 +31,7 @@ export default () => {
         <Search />
       </Route>
       <Route path="/all">
-        <Accordion />
-        <ColorSelect />
-        <Translate />
-        <Search />
+        <FinalBoard />
       </Route>
       <Route path="/login">
         <Login />
