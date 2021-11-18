@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  
+  .green{
+    color: #b22;
+  }
+  
+  .wrap{
+    background-color: #F8F8F8;  
+  }
+
+  .Container{  
+    height: 600px;
+    width: 200px;
+    background-color: #b22;    
+    
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  
+  .Container .name{
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+  } 
+  .Container .modify{
+    margin-left: auto;
+  }
+  
+  /* 단골상점 , 상품후기 , 적립금 박스 */
+  .summaryContainer{
+    background-color: white;  
+    display: flex;  
+    padding: 21px 16px;  
+    height: 600px;
+    margin-bottom: 10px;
+  }
+  /* 단골상점 , 상품후기 , 적립금 */
+  .summaryContainer .item{
+    flex-grow: 1
+  }
+  /* 녹색 숫자 */
+  .summaryContainer .number{
+    font-size: 19px;
+    font-weight: bold;
+    color: #b22;
+  }
+  /* 텍스트 */
+  .summaryContainer .item > div:nth-child(2){
+    font-size: 13px;
+  }

@@ -5,7 +5,7 @@ import '../css/modal_styles.css';
 function upload_img(event, pinDetails, setPinDetails, setShowLabel, setShowModalPin) {
     if (event.target.files && event.target.files[0]) {
         if (/image\/*/.test(event.target.files[0].type)) {
-            const reader = new FileReader();
+            const reader = new FileReader();    
 
             reader.onload = function () {
                 setPinDetails({

@@ -9,13 +9,11 @@ CORS(app)
 app.secret_key = 'super secret key'
 
 client = MongoClient('mongodb://mongo:27017/') 
-db = client.newDB # db 를 하나 만들고 
+db = client.newDB  
 userCollection = db.user
-#userCollection.insert_one({ 'userid' : 'root', 'userpw' : 'root', 'username':'root', 'useremail':'root'})
+imageCollection = db.image
 
-#app.config.from_object(config_by_name())
-#db = MongoEngine()
-#db.init_app(app)
+from .mongo_init import *
 
 from .views import views
 from .auth import auth

@@ -7,7 +7,6 @@ networks:
 volumes:
   kong-datastore:
   elasticsearch:
-  node-modules:
 
 services:
 

@@ -10,6 +10,7 @@ import Search from "./components/Search";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Subscribe from "./components/Subscribe";
+import MyPage from "./components/Mypage";
 
 export default () => {
   return (
@@ -17,6 +18,9 @@ export default () => {
       <Header />
       <Route path="/">
         <Categories />
+      </Route>
+      <Route path="/mypage">
+        <MyPage />
       </Route>
       <Route path="/home">
         <Home />
