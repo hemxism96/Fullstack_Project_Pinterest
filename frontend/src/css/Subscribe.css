@@ -9,17 +9,15 @@
   body {
     background-image:#34495e;
   }
-  
   .joinForm {
-    position:absolute;
+    position: relative;
+    top: 40%;
+    flex-direction: column;
     width:400px;
     height:400px;
-    padding: 30px, 20px;
-    background-color:#FFFFFF;
+    background-color: transparent;
     text-align:center;
-    top:40%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    justify-content: center;
     border-radius: 15px;
   }
   

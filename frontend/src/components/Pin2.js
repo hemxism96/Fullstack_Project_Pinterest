@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
+import '../css/pin_styles.css';
 
 function Pin2(props) {
 
@@ -7,6 +8,7 @@ function Pin2(props) {
     return (
         <Wrapper>
             <Container>
+                <div className="save_card">Save</div>
                 <img src={urls?.regular} alt="pin" />
             </Container>
         </Wrapper>
@@ -27,6 +29,7 @@ const Container = styled.div`
     box-sizing: border-box;
     cursor: pointer;
     width: 236px;
+    position: relative;
 
     img {
         display: flex;

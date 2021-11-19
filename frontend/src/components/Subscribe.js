@@ -23,7 +23,9 @@ class Subscribe extends Component {
       
     return (
         <form action="/api/subscribe" method="POST">
-                                                                                               
+          <div class="joinForm"></div>
+          <div class="joinForm"></div>
+          <div class="joinForm">
             <h2>Subscribe</h2>
             <div class="textForm">
                 <input name="loginId" type="text" class="id" placeholder="Id" />
@@ -41,6 +43,7 @@ class Subscribe extends Component {
                 <input name="email" type="text" class="email" placeholder="Email Address" />
             </div>
             <input type="submit" class="btn" value="J O I N"/>
+          </div>
         </form>
       )
   }

@@ -83,9 +83,9 @@ def login():
         if data is not None:
             session['userid'] = id
             return redirect('/')
-        else: return redirect('/api')
+        else: return "There's no user correspond with this id and password"
     else:
-        return redirect(url_for('views.index'),404)
+        return redirect('/',404)
 
 @views.route('/api/logout', methods=['GET','POST'])
 def logout():

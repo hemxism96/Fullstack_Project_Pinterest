@@ -21,31 +21,39 @@ class Mypage extends Component {
     const { user } = this.state;
     if (user.session=='user'){
       return (
-        <div class="wrap">
-        <div class="Container">
-          <div>
-            <div>{user.username}</div>
-          </div>    
-        </div>
-        <div class="summaryContainer">
-          <div class="item">
-              <div class="number">{user.userid}</div>
-              <div>ID</div>
+        <div class="box">
+          <div class="tap">
+            <div class="wrap">
+              <div class="Container">
+                <div>
+                  <div>{user.username}</div>
+                </div>
+                <div class="margin_box"></div>
+                <div>
+                  <div>ID: </div>
+                  <div class="number">{user.userid}</div>
+                </div>
+                <div class="margin_box"></div>
+                <div class>
+                  <div>Email: </div>
+                  <div class="number">{user.useremail}</div>
+                </div> 
+              </div>
             </div>
-            <div class="item">
-              <div class="number">{user.useremail}</div>
-              <div>Email</div>
-            </div>
+            <form action="/api/logout" method="POST">
+                <input type="submit" class="btn" value="LOG OUT"/>
+            </form>
+          </div>
         </div>
-        <form action="/api/logout" method="POST">
-            <input type="submit" class="btn" value="LOG OUT"/>
-        </form>
-      </div>
       )
     }
     else {
       return (
         <form action="/api/login" method='POST'>
+          <div class="wrap">
+              <div class="login">
+              </div>
+          </div>
           <div class="wrap">
               <div class="login">
                   <h2>Log-in</h2>
@@ -59,7 +67,7 @@ class Mypage extends Component {
                   </div>
                   <div class="login_etc">
                       <div class="subscribe">
-                        <a href="/subscribe">You didn't subscribe yet? Subscribe!</a>
+                        <a href="/subscribe">You didn't subscribe yet? Join us!</a>
                       </div>
                   </div>
                   <div class="submit">
