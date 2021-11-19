@@ -42,7 +42,8 @@ class Mypage extends Component {
               </div>
             </div>
             <div class="container">
-              {user.favorite_photos}
+              <h2>Favorite Image</h2>
+              <div class="cards"><img src={user.favorite_photos}></img></div>
             </div>
             <form action="/api/logout" method="POST">
                 <input type="submit" class="btn" value="LOG OUT"/>

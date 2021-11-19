@@ -1,6 +1,6 @@
 from app.app import imageCollection, userCollection
 
-userCollection.insert_one({ 'userid' : 'root', 'userpw' : 'root', 'username':'root', 'useremail':'root','favorite_photos':[]})
+userCollection.insert_one({ 'userid' : 'root', 'userpw' : 'root', 'username':'root', 'useremail':'root','favorite_photos':''})
 
 import base64
 from urllib import request
@@ -16,4 +16,4 @@ images = [
 for url in images:
     image = request.urlopen(url).read()
     image = base64.b64encode(image)
-    #imageCollection.insert_one({'value' : image})
+    imageCollection.insert_one({'value' : image})

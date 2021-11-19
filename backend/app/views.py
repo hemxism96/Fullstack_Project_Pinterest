@@ -9,7 +9,6 @@ views = Blueprint('views', __name__)
 
 @views.route("/api")
 def index():
-    #tmp = {'session':'','userid':'','username':'','useremail':''}
     if session.get('userid'):
         user = userCollection.find_one({'userid':session['userid']})
         tmp = {'session':'user','userid':user['userid'],'username':user['username'],'useremail':user['useremail'],'favorite_photos':user['favorite_photos']}
@@ -18,17 +17,6 @@ def index():
         tmp = {'session':''}
         return jsonify(tmp)
 
-@views.route("/api2")
-def index_test():
-    res = list(imageCollection.find())
-    for i in range(len(res)):
-        res[i]['value'] = "data:image/png;base64,"+res[i]['value'].decode()
-    return json.dumps(res, default=str)
-
-@views.route("/api/mypage")
-def user_index():
-    user = userCollection.find_one({'userid':session['userid']})
-    return jsonify({'userid':user['userid'],'username':user['username'],'useremail':user['useremail']})
     
 @views.route('/about')
 def test_response():
@@ -69,7 +57,7 @@ def register():
         elif userCollection.find_one({'userid':id}):
             return 'Already exist'
         else:
-            tmp = {'userid':id, 'userpw':pw, 'username':name, 'useremail':email,'favorite_photos':[]}
+            tmp = {'userid':id, 'userpw':pw, 'username':name, 'useremail':email,'favorite_photos':''}
             userCollection.insert_one(tmp)
             return 'Succeed'
 
@@ -97,14 +85,7 @@ def upload():
     if request.method == "POST":
         if session['userid']:
             photo_url = request.form.get('url')
-            user = userCollection.find_one({'userid':session['userid']})
-
-            if user['favorite_photos'] is None:
-                user['favorite_photos'] = [photo_url]
-            else:
-                user['favorite_photos'] = user['favorite_photos'].append(photo_url)
-
-            userCollection.update({ 'userid': user['userid']}, { "$set": { 'favorite_photos': user['favorite_photos']}})
+            userCollection.update({ 'userid': session['userid']}, { "$set": { 'favorite_photos': photo_url}})
             
             return "Succeed to save as a your favorite image"
         else:
@@ -112,3 +93,18 @@ def upload():
 
     else:
         return redirect('/',404)
+
+
+############ made but unused ##############
+
+@views.route("/api2")
+def index_test():
+    res = list(imageCollection.find())
+    for i in range(len(res)):
+        res[i]['value'] = "data:image/png;base64,"+res[i]['value'].decode()
+    return json.dumps(res, default=str)
+
+@views.route("/api/mypage")
+def user_index():
+    user = userCollection.find_one({'userid':session['userid']})
+    return jsonify({'userid':user['userid'],'username':user['username'],'useremail':user['useremail']})
