@@ -14,7 +14,6 @@ import MyPage from "./components/Mypage";
 import unsplash from "./api/unsplash";
 
 
-
 function  App() {
 
   const [pins, setNewPins] = useState([])

@@ -9,10 +9,14 @@ views = Blueprint('views', __name__)
 
 @views.route("/api")
 def index():
+    #tmp = {'session':'','userid':'','username':'','useremail':''}
     if session.get('userid'):
-        return json.dumps('user', default=str)
+        user = userCollection.find_one({'userid':session['userid']})
+        tmp = {'session':'user','userid':user['userid'],'username':user['username'],'useremail':user['useremail']}
+        return jsonify(tmp)
     else:
-        return json.dumps('no user', default=str)
+        tmp = {'session':''}
+        return jsonify(tmp)
 
 @views.route("/api2")
 def index_test():
@@ -83,7 +87,7 @@ def login():
     else:
         return redirect(url_for('views.index'),404)
 
-@views.route('/logout', methods=['GET'])
+@views.route('/api/logout', methods=['GET','POST'])
 def logout():
 	session.pop('userid', None)
 	return redirect('/')

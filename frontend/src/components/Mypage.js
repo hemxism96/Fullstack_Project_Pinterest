@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../css/Mypage.css';
+import '../css/Login.css';
 
-class Test extends Component {
+class Mypage extends Component {
   constructor(props) {
     super(props);
  
@@ -18,7 +19,7 @@ class Test extends Component {
 
   render() {
     const { user } = this.state;
-    if (user=='user'){
+    if (user.session=='user'){
       return (
         <div class="wrap">
         <div class="Container">
@@ -36,6 +37,9 @@ class Test extends Component {
               <div>Email</div>
             </div>
         </div>
+        <form action="/api/logout" method="POST">
+            <input type="submit" class="btn" value="LOG OUT"/>
+        </form>
       </div>
       )
     }
@@ -68,4 +72,4 @@ class Test extends Component {
   }
 }
 }
-export default Test;
+export default Mypage;
