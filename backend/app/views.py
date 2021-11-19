@@ -17,27 +17,12 @@ def index():
         tmp = {'session':''}
         return jsonify(tmp)
 
-    
-@views.route('/about')
-def test_response():
-    return jsonify({'jack': 4098, 'sape': 4139})
-
 @views.route("/api/image")
 def FYI_index():
     res = list(imageCollection.find())
     for i in range(len(res)):
         res[i]['value'] = "data:image/png;base64,"+res[i]['value'].decode()
     return json.dumps(res, default=str)
-
-@views.route('/api/about')
-def health():
-    tmp = {'hits':[{'one': 4098, 'two': 4139}]}
-    return tmp
-
-@views.route("/api/test")
-def test():
-    res = userCollection.find()
-    return json.dumps(list(res), default=str)
 
 @views.route('/api/subscribe', methods=['GET','POST'])
 def register():
@@ -108,3 +93,17 @@ def index_test():
 def user_index():
     user = userCollection.find_one({'userid':session['userid']})
     return jsonify({'userid':user['userid'],'username':user['username'],'useremail':user['useremail']})
+
+@views.route('/api/about')
+def health():
+    tmp = {'hits':[{'one': 4098, 'two': 4139}]}
+    return tmp
+
+@views.route("/api/test")
+def test():
+    res = userCollection.find()
+    return json.dumps(list(res), default=str)
+
+@views.route('/about')
+def test_response():
+    return jsonify({'jack': 4098, 'sape': 4139})

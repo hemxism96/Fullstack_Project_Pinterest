@@ -20,10 +20,16 @@ $ docker-compose up -d
 </code>
 </pre>
 
+
+
 #### Home Page
+This is the home page with various random image taken from the free API Unsplash
 
 #### Signup Page
+You have to create an id, a paswword, to give your name and give your email
 
 #### Login Page
+You connect by using your id and your password. If you didn't create an account yet, click on Register now.
 
 #### Favorite Page
+You can visualize your favorite photos here, aswell as your email, your id and button to logout.

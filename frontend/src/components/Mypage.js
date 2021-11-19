@@ -63,7 +63,7 @@ class Mypage extends Component {
               <div class="login">
                   <h2>Log-in</h2>
                   <div class="login_id">
-                      <h4>E-mail</h4>
+                      <h4>ID</h4>
                       <input type="text" name="id" id="id" placeholder="Id" />
                   </div>
                   <div class="login_pw">
