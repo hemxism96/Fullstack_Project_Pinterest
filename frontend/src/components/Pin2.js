@@ -8,7 +8,7 @@ function Pin2(props) {
     return (
         <Wrapper>
             <Container>
-                <div className="save_card">Save</div>
+                <div className="save_card">SAVE</div>
                 <img src={urls?.regular} alt="pin" />
             </Container>
         </Wrapper>
@@ -22,6 +22,7 @@ const Wrapper = styled.div`
     padding: 8px;
 
 `
+
 
 const Container = styled.div`
     display:flex;
