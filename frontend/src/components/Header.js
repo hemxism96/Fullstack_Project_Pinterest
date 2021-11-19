@@ -27,7 +27,7 @@ import styled from 'styled-components';
           </li>
           <li className="tap">
             <Link href="/categories" className="item">
-              Categories
+              Database images
             </Link>
           </li>
           <li className="tap">

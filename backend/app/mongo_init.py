@@ -16,4 +16,5 @@ images = [
 for url in images:
     image = request.urlopen(url).read()
     image = base64.b64encode(image)
-    imageCollection.insert_one({'value' : image})
+    # if we want to add more images on our database activate this code
+    #imageCollection.insert_one({'value' : image})
