@@ -10,13 +10,15 @@
   }
   
   .wrap{
-    background-color: #F8F8F8;  
+    background-color: transparent;
+    width:100%;
+    margin-top: 15px;  
   }
 
   .Container{  
     height: 600px;
     width: 200px;
-    background-color: #b22;    
+    background-color:transparent;    
     
     display: flex;
     align-items: flex-end;

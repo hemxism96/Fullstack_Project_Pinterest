@@ -1,38 +1,40 @@
 import React, { Component } from 'react';
+import styled from "styled-components";
+import '../css/Home.css';
+import Pin2 from "./Pin2";
 
 const url = '/api/about'
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
- 
-    this.state = {
-      hits: [],
-    };
-  }
- 
-  componentDidMount() {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => this.setState({ hits: data.hits}));
-  }
-
-  render() {
-    const { hits } = this.state;
+  function Home(props) {
+    /* const { hits } = this.state; */
+    let { pins } = props;
+    
       
     return (
-        <div className="home">
-          <h1>Blockchain Voter</h1>
-          <ul>
-            {hits.map(hit =>
-              <li key={hit.one}>
-                <a>{hit.two}</a>
-              </li>
-            )}
-          </ul>
-          <button onClick={() => this.fetchHelloWorld()}>Python</button>
-        </div>
+      <div className="wrap">
+      <div className="Containers">
+          {pins.map((pin, index) => {
+            let {urls} = pin;
+            return <Pin2 key={index}  urls={urls} />
+          })} 
+      </div>
+    </div>
       )
   }
-}
+
 export default Home;
+
+const Wrapper = styled.div`
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    `
+
+const Container = styled.div`
+    height: 600px;
+    display: flex;
+    width: 80%;
+    background-color: green;
+    align-items: flex-end;
+    padding: 16px;
+    `

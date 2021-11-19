@@ -1,0 +1,38 @@
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+  } 
+  
+  .wrap{
+    background-color: transparent;  
+  }
+
+  .Containers{
+    height: 100%;
+    max-width: 1260px;
+    background-color:transparent; 
+    column-count: 5; 
+    column-gap: 10px; 
+    margin: 0 auto; 
+    padding: 16px;
+  }
+
+  .Containers .name{
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+  } 
+  .Containers .modify{
+    margin-left: auto;
+  }
+
+  @media (min-width: 1260px) and (max-width: 1511px){
+    .mainboard__container {
+      max-width: 1260px;
+      column-count: 4;
+    }
+  }
+  

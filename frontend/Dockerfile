@@ -11,8 +11,11 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 RUN npm install
 RUN npm install react-router-dom
+RUN npm install react-test-renderer
 RUN npm install axios --save
 RUN npm install react-scripts -g
+
+
 
 ADD . /app
 

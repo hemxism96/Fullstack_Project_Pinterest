@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import '../css/Index.css';
 const url = '/api/image';
 
-class Home extends Component {
+class Categories extends Component {
   constructor(props) {
     super(props);
  
@@ -53,4 +53,4 @@ class Home extends Component {
       )
   }
 }
-export default Home;
+export default Categories;

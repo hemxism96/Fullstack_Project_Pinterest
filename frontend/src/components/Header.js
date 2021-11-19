@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
+import React,  { useState } from 'react';
+
 
 import Link from "./Link";
 import '../css/Header.css';
 import logo from '../logo.png';
+import styled from 'styled-components';
 
-const url = '/api';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
- 
-    this.state = {
-      user: [],
-    };
-  }
- 
-  componentDidMount() {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => this.setState({ user: data }));
-  }
+  const url = '/api';
 
-  render() {
-    const { user } = this.state;
+  function Header(props) {
+    const { user } = "user";
+    const [input, setInput] = useState("");
+
+    const onSearchSubmit = (e) => {
+      e.preventDefault();
+      props.onSubmit(input);
+      
+    }
+
+
     if (user=='user'){
       return (
         <div className="App-header">
@@ -32,28 +29,27 @@ class Header extends Component {
             </Link>
           </li>
           <li className="tap">
-            <Link href="/home" className="item">
-              Home
-            </Link> 
-          </li>
-          <li className="tap">
-            <Link href="/color-select" className="item">
-              Color Select
+            <Link href="/categories" className="item">
+              Categories
             </Link>
           </li>
           <li className="tap">
-            <Link href="/translate" className="item">
-              Translate
-            </Link>
+          < li className="search-bar-wrapper">
+          <form action="/" method="get">
+              <label htmlFor="header-search">
+            <span className="visually-hidden">Search anything...</span>
+              </label>
+                <input 
+                type="text" onChange={(e) => setInput(e.target.value)}
+                 />
+                <button type="submit" onClick={onSearchSubmit}></button>
+              </form>
+            </li> 
           </li>
-          <li className="tap">
-            <Link href="/search" className="item">
-              Wiki Search
-            </Link>
-          </li>
+        
           <li className="tap">
             <Link href="/all" className="item">
-              All Widgets
+              Add pins
             </Link>
           </li>
           <li className="tap">
@@ -73,28 +69,25 @@ class Header extends Component {
             </Link>
           </li>
           <li className="tap">
-            <Link href="/home" className="item">
-              Home
-            </Link> 
-          </li>
-          <li className="tap">
-            <Link href="/color-select" className="item">
-              Color Select
+            <Link href="/categories" className="item">
+              Categories
             </Link>
           </li>
-          <li className="tap">
-            <Link href="/translate" className="item">
-              Translate
-            </Link>
-          </li>
-          <li className="tap">
-            <Link href="/search" className="item">
-              Wiki Search
-            </Link>
-          </li>
+          < li className="search-bar-wrapper">
+
+              <form action="/" method="get">
+              <label htmlFor="header-search">
+            <span className="visually-hidden">Search anything...</span>
+              </label>
+              <input 
+                type="text" onChange={(e) => setInput(e.target.value)}
+                 />
+                <button type="submit" onClick={onSearchSubmit}></button>
+              </form>
+            </li> 
           <li className="tap">
             <Link href="/all" className="item">
-              All Widgets
+              Add a pin
             </Link>
           </li>
           <li className="tap">
@@ -107,5 +100,38 @@ class Header extends Component {
     }
     
   }
-}
-export default Header;
+
+export default Header
+
+const SearchWrapper = styled.div`
+      flex: 1;`
+
+const SearchBarWrapper = styled.div`
+      background-color: #efefef;
+      display: flex;
+      height: 60px;
+      width: 100%;
+      border-radius: 50px;
+      padding-left: 10px;
+      
+      form {
+        display: flex;
+        flex: 1;
+      }
+      
+      form > input {
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        margin-left: 5px;
+        font-size: 16px;
+      }
+      
+      form > button {
+        display: none;
+      }
+
+      input:focus {
+        outline: none;
+      }
+    `
