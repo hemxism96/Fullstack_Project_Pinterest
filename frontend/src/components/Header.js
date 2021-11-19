@@ -7,10 +7,8 @@ import logo from '../logo.png';
 import styled from 'styled-components';
 
 
-  const url = '/api';
-
   function Header(props) {
-    const { user } = "user";
+
     const [input, setInput] = useState("");
 
     const onSearchSubmit = (e) => {
@@ -19,9 +17,8 @@ import styled from 'styled-components';
       
     }
 
-
-    if (user=='user'){
-      return (
+    
+    return (
         <div className="App-header">
           <li className="tap">
             <Link href="/" className="item">
@@ -59,45 +56,6 @@ import styled from 'styled-components';
           </li>
         </div>
       );
-    }
-    else{
-      return (
-        <div className="App-header">
-          <li className="tap">
-            <Link href="/" className="item">
-              <img src={logo} width="150" alt="logo" />
-            </Link>
-          </li>
-          <li className="tap">
-            <Link href="/categories" className="item">
-              Categories
-            </Link>
-          </li>
-          < li className="search-bar-wrapper">
-
-              <form action="/" method="get">
-              <label htmlFor="header-search">
-            <span className="visually-hidden">Search anything...</span>
-              </label>
-              <input 
-                type="text" onChange={(e) => setInput(e.target.value)}
-                 />
-                <button type="submit" onClick={onSearchSubmit}></button>
-              </form>
-            </li> 
-          <li className="tap">
-            <Link href="/all" className="item">
-              Add a pin
-            </Link>
-          </li>
-          <li className="tap">
-            <Link href="/login" className="item">
-              Log in
-            </Link>
-          </li>
-        </div>
-      );
-    }
     
   }
 

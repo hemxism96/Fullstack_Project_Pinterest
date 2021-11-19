@@ -16,14 +16,14 @@ function Pin2(props) {
 export default Pin2;
 
 const Wrapper = styled.div`
-    display: inline-flex;
+    display: flex;
     padding: 8px;
 
 `
 
 const Container = styled.div`
     display:flex;
-    align-items: flex-start;
+    align-items: center;
     box-sizing: border-box;
     cursor: pointer;
     width: 236px;

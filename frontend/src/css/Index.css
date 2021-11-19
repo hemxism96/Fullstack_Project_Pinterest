@@ -1,21 +1,19 @@
 * {
-    font-family: 'Rubik', sans-serif;
-    font-weight:bolder;
-    margin:0px;
-    padding:0px;
-    user-select:none;
-    background:#f3f2ef;
-    text-align:center;
-  
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  background:#f3f2ef;
+}
+
   .container{
     display:flex;
     justify-content:center;
     align-items:center;
     flex-wrap:wrap;
-    margin:100px 0px;
     max-width:100%;
   }
+
   .cards{
     width:250px;
     height:300px;
@@ -23,24 +21,18 @@
     margin:20px;
     border-radius:15px;
     box-shadow:0px 0px 15px 0px #313131;
-    background-size:102%;
+    background-size: 100%;
     background-repeat:no-repeat;
-    background-position:top center;
+    background-position: center;
     position:relative;
     overflow:hidden;
   }
-  .card1{
-    background-image:url("https://i.pinimg.com/564x/29/c1/37/29c1370e77372a49bfe5278990ce2829.jpg");
+  .cards img { 
+    display: block; 
+    width: 100%; 
+    height: 100%;
   }
-  .card2{
-    background-image:url("https://steamuserimages-a.akamaihd.net/ugc/771736672668964167/C60BACF8759C183D6AB7F98C3DE7263EFE672906/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false");
-    /* or
-    background-image:url("https://i.hizliresim.com/gp7wjgg.jpg");*/
-  }
-  .card3{
-    background-image:url("https://i.pinimg.com/564x/3f/c4/aa/3fc4aa033d8185f57a02528283e60ad8.jpg");
-  }
-  
+
   .bottom-bar{
     width:100%;
     height:45px;
@@ -55,7 +47,7 @@
     z-index:99;
     border-top:1px solid #3333;
   }
-  
+
   .cards:hover .bottom-bar{
     bottom:0px;
   }
@@ -77,33 +69,15 @@
     font-size:18px;
     color:mediumslateblue;
   }
-  /******************RESPONSIVE***********************/
-  @media screen and (max-width:500px){
-    .cards{
-      margin:15px 5px;
-      width:245px;
-      height:295px;
-    }
-    .bottom-bar{
-      height:46px;
-    }
+  .card1{
+    background-image:url("https://i.pinimg.com/564x/29/c1/37/29c1370e77372a49bfe5278990ce2829.jpg");
   }
-  
-  .index_box {
-    width:600;
-    height:450;
-    padding: 30px, 20px;
-    background-color:#FFFFFF;
-    text-align:center;
-    top:40%;
-    border-radius: 15px;
+  .card2{
+    background-image:url("https://steamuserimages-a.akamaihd.net/ugc/771736672668964167/C60BACF8759C183D6AB7F98C3DE7263EFE672906/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false");
+    /* or
+    background-image:url("https://i.hizliresim.com/gp7wjgg.jpg");*/
   }
-
-  .index_box li {
-    margin: 15px 10px;
-    padding: 0;
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
+  .card3{
+    background-image:url("https://i.pinimg.com/564x/3f/c4/aa/3fc4aa033d8185f57a02528283e60ad8.jpg");
   }
   
