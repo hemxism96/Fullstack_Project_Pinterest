@@ -1,6 +1,6 @@
 from app.app import imageCollection, userCollection
 
-userCollection.insert_one({ 'userid' : 'root', 'userpw' : 'root', 'username':'root', 'useremail':'root'})
+userCollection.insert_one({ 'userid' : 'root', 'userpw' : 'root', 'username':'root', 'useremail':'root','favorite_photos':[]})
 
 import base64
 from urllib import request

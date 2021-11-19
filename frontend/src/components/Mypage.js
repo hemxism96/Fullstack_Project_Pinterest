@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Mypage.css';
 import '../css/Login.css';
+import '../css/Index.css';
 
 class Mypage extends Component {
   constructor(props) {
@@ -39,6 +40,9 @@ class Mypage extends Component {
                   <div class="number">{user.useremail}</div>
                 </div> 
               </div>
+            </div>
+            <div class="container">
+              {user.favorite_photos}
             </div>
             <form action="/api/logout" method="POST">
                 <input type="submit" class="btn" value="LOG OUT"/>

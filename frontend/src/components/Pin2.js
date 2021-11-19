@@ -2,16 +2,25 @@ import React from 'react';
 import styled from "styled-components"
 import '../css/pin_styles.css';
 
+
 function Pin2(props) {
 
     let {urls} = props;
     return (
-        <Wrapper>
-            <Container>
-                <div className="save_card">SAVE</div>
-                <img src={urls?.regular} alt="pin" />
-            </Container>
-        </Wrapper>
+        <form action="/api/like_photos" method='POST'>
+            <Wrapper>
+                <Container>
+                    <button className="save_card" onclick="button_click();">SAVE</button>
+                    <img src={urls?.regular} alt="pin" />
+                    <script>
+                        function button_click(s) {
+                            <input name="url" type="text" value={urls?.regular} />
+                        }
+                        <input type="submit"/>
+                    </script>
+                </Container>
+            </Wrapper>
+        </form>
     )
 }
 

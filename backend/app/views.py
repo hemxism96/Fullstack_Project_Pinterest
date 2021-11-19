@@ -12,7 +12,7 @@ def index():
     #tmp = {'session':'','userid':'','username':'','useremail':''}
     if session.get('userid'):
         user = userCollection.find_one({'userid':session['userid']})
-        tmp = {'session':'user','userid':user['userid'],'username':user['username'],'useremail':user['useremail']}
+        tmp = {'session':'user','userid':user['userid'],'username':user['username'],'useremail':user['useremail'],'favorite_photos':user['favorite_photos']}
         return jsonify(tmp)
     else:
         tmp = {'session':''}
@@ -69,7 +69,7 @@ def register():
         elif userCollection.find_one({'userid':id}):
             return 'Already exist'
         else:
-            tmp = {'userid':id, 'userpw':pw, 'username':name, 'useremail':email}
+            tmp = {'userid':id, 'userpw':pw, 'username':name, 'useremail':email,'favorite_photos':[]}
             userCollection.insert_one(tmp)
             return 'Succeed'
 
@@ -92,17 +92,23 @@ def logout():
 	session.pop('userid', None)
 	return redirect('/')
 
-@views.route("/api/upload", methods=['GET','POST'])
+@views.route("/api/like_photos", methods=['GET','POST'])
 def upload():
     if request.method == "POST":
-        image = request.form.get('upload_img')
-        title = request.form.get('pin_title')
-        description = request.form.get('pin_description')
+        if session['userid']:
+            photo_url = request.form.get('url')
+            user = userCollection.find_one({'userid':session['userid']})
 
-        if not (image and title and description):
-            return 'Type everything'
+            if user['favorite_photos'] is None:
+                user['favorite_photos'] = [photo_url]
+            else:
+                user['favorite_photos'] = user['favorite_photos'].append(photo_url)
+
+            userCollection.update({ 'userid': user['userid']}, { "$set": { 'favorite_photos': user['favorite_photos']}})
+            
+            return "Succeed to save as a your favorite image"
         else:
-            imageCollection.insert_one({'image':image, 'title':title, 'description':description})
-            return redirect(url_for('views.index'))
+            return "Login First"
+
     else:
-        return redirect(url_for('views.index'),404)
+        return redirect('/',404)
