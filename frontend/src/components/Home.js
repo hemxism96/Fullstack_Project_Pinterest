@@ -11,7 +11,7 @@ const url = '/api/about'
     
       
     return (
-      <div className="wrap">
+      <div className="wraps">
       <div className="Containers">
           {pins.map((pin, index) => {
             let {urls} = pin;
