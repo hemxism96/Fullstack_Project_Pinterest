@@ -72,7 +72,7 @@ class Mypage extends Component {
                   </div>
                   <div class="login_etc">
                       <div class="subscribe">
-                        <a href="/subscribe">You didn't subscribe yet? Join us!</a>
+                        <a href="/subscribe">You didn't register yet? Join us!</a>
                       </div>
                   </div>
                   <div class="submit">
