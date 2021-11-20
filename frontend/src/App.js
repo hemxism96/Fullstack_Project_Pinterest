@@ -84,15 +84,6 @@ function  App() {
       <Route path="/mypage">
         <MyPage />
       </Route>
-      <Route path="/categories">
-        <Categories />
-      </Route>
-      <Route path="/color-select">
-        <ColorSelect />
-      </Route>
-      <Route path="/translate">
-        <Translate />
-      </Route>
       <Route path="/search">
         <Search />
       </Route>
