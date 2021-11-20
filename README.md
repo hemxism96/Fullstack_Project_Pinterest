@@ -32,8 +32,9 @@ This is our database page
 
 #### Add pins page
 This is a page where you can upload your own images
-<img width "1309" alt="스크린샷 2021-11-20 00 06 04" src="https://user-images.githubusercontent.com/56486266/142707652-1e1fd0dd-59d7-4285-95d6-ddc6d4e01c63.PNG">
-<img width "1309" alt="스크린샷 2021-11-20 00 06 04" src="https://user-images.githubusercontent.com/56486266/142707743-f411da90-5c76-4268-9637-db101d7573eb.PNG">
+<img width="1309" alt="스크린샷 2021-11-20 00 06 05" src="https://user-images.githubusercontent.com/56486266/142707652-1e1fd0dd-59d7-4285-95d6-ddc6d4e01c63.PNG">
+
+<img width="1309" alt="스크린샷 2021-11-20 00 06 06" src="https://user-images.githubusercontent.com/56486266/142707743-f411da90-5c76-4268-9637-db101d7573eb.PNG">
 
 #### Signup Page
 You have to create an id, a paswword, to give your name and give your email
